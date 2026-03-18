@@ -199,7 +199,7 @@ export default function FAQPage() {
               </div>
 
               {/* Accordion */}
-              <Accordion type="single" collapsible className="space-y-2">
+              <Accordion className="space-y-2">
                 {section.faqs.map((faq, i) => (
                   <AccordionItem
                     key={i}
