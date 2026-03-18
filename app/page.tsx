@@ -164,26 +164,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Floating harvest badge — mid-right, clear of trust chips */}
-        <div
-          className="absolute z-10 blur-fade blur-fade-6"
-          style={{ bottom: '6.5rem', right: '2rem' }}
-        >
-          <div
-            className="px-4 py-3 rounded-2xl backdrop-blur-md"
-            style={{
-              backgroundColor: 'rgba(245,241,232,0.10)',
-              border: '1px solid rgba(245,241,232,0.18)',
-            }}
-          >
-            <p className="font-serif text-sm font-bold" style={{ color: 'var(--cream)' }}>
-              Harvested this week
-            </p>
-            <p className="text-xs mt-0.5" style={{ color: 'rgba(191,214,191,0.80)' }}>
-              Baden, Ontario 🌿
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* ── SECTION 2: TRUST MARQUEE ──────────────────────── */}
@@ -272,7 +252,22 @@ export default function HomePage() {
         style={{ backgroundColor: 'var(--cream)' }}
       >
         <div className="max-w-6xl mx-auto">
-          {/* No heading — let the quotes land */}
+          {/* Section header */}
+          <div className="text-center mb-12">
+            <p
+              className="text-sm font-medium uppercase tracking-widest mb-3"
+              style={{ color: 'var(--orange)' }}
+            >
+              From our community
+            </p>
+            <h2
+              className="font-serif text-4xl sm:text-5xl"
+              style={{ color: 'var(--green)' }}
+            >
+              People who know the difference.
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <TestimonialCard
