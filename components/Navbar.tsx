@@ -10,11 +10,10 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import { Menu, ShoppingBag, X, Leaf } from 'lucide-react'
 
 const navLinks = [
-  { href: '/',            label: 'Home' },
-  { href: '/shop',        label: 'Shop' },
-  { href: '/farm-share',  label: 'Farm Share' },
-  { href: '/about',       label: 'Our Story' },
-  { href: '/faq',         label: 'FAQ' },
+  { href: '/',               label: 'Home' },
+  { href: '/how-it-works',   label: 'How it works' },
+  { href: '/about',          label: 'About' },
+  { href: '/explore',        label: 'Explore' },
 ]
 
 export default function Navbar() {
