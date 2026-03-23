@@ -9,7 +9,11 @@ import TestimonialCard from '@/components/TestimonialCard'
 import NewsletterSection from '@/components/NewsletterSection'
 import { featuredProducts, products, categories } from '@/lib/products'
 import type { Category } from '@/lib/products'
-import { ArrowRight, CalendarDays, ShoppingBag, Truck, Leaf, ChevronRight } from 'lucide-react'
+import { ArrowRight, CalendarDays, ShoppingBag, Truck, Leaf, ChevronRight, Clock } from 'lucide-react'
+import { tiers, earlyBirdWindow } from '@/lib/tiers'
+
+// 3 tiers for homepage teaser (Bounty first — anchoring)
+const homepageTiers = ['bounty', 'essential', 'sampler'].map(id => tiers.find(t => t.id === id)!)
 
 const testimonials = [
   {
@@ -53,114 +57,106 @@ export default function HomePage() {
       {/* ── SECTION 1: HERO ───────────────────────────────── */}
       <section className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
 
-        {/* Full-bleed background image — [SWAP: upload your farm photo to /public/farm-hero.jpg] */}
+        {/* Full-bleed background — actual TNT farm */}
         <Image
-          src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1800&auto=format&fit=crop&q=85"
-          alt="True North Tropical farm in Baden, Ontario — rows of fresh Afro-heritage vegetables"
+          src="/farm-hero.webp"
+          alt="True North Tropical farm in Baden, Ontario — polytunnel greenhouses and rows of fresh vegetables"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-top"
           sizes="100vw"
         />
 
-        {/* Layered dark overlays for text legibility */}
+        {/* Overlay — dark enough for legibility, light enough to show the farm */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(160deg, rgba(20,40,25,0.25) 0%, rgba(18,38,22,0.55) 40%, rgba(10,28,14,0.85) 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-3/4 pointer-events-none"
-          style={{
-            background: 'linear-gradient(to top, rgba(8,24,12,0.80) 0%, transparent 100%)',
+            background: 'linear-gradient(to bottom, rgba(10,28,14,0.45) 0%, rgba(10,28,14,0.70) 60%, rgba(8,22,12,0.88) 100%)',
           }}
         />
 
-        {/* Content pinned to bottom-left */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pb-16 sm:pb-24 pt-40 w-full">
-          <div className="max-w-[640px]">
+        {/* Content — centred */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-6 sm:px-10 pb-20 sm:pb-28 pt-40 text-center flex flex-col items-center">
 
-            {/* Season badge */}
-            <div className="inline-flex items-center gap-2 mb-7 blur-fade blur-fade-1">
-              <span
-                className="text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full"
-                style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
+          {/* Season badge */}
+          <div className="inline-flex items-center gap-2 mb-7 blur-fade blur-fade-1">
+            <span
+              className="text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full"
+              style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
+            >
+              🌿 Season Opens June 2026
+            </span>
+          </div>
+
+          {/* H1 */}
+          <h1
+            className="font-serif blur-fade blur-fade-2"
+            style={{
+              fontSize: 'clamp(2.6rem, 7vw, 5.8rem)',
+              color: 'var(--cream)',
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+              marginBottom: '1.5rem',
+            }}
+          >
+            Experience food that tastes<br />
+            like home from{' '}
+            <span style={{ color: 'var(--orange)' }}>your local farm.</span>
+          </h1>
+
+          {/* Subheadline */}
+          <p
+            className="mb-10 blur-fade blur-fade-3"
+            style={{
+              fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
+              color: 'rgba(245,241,232,0.78)',
+              fontWeight: 300,
+              maxWidth: '560px',
+              lineHeight: 1.7,
+            }}
+          >
+            Discover wholesome, seasonal Afro-heritage vegetables grown fresh in Baden, Ontario.
+            Weekly delivery and pickup available from June through October.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10 blur-fade blur-fade-4">
+            <Link href="/shop">
+              <button
+                className="shimmer-btn px-8 rounded-xl text-base font-semibold flex items-center gap-2"
+                style={{ backgroundColor: 'var(--orange)', color: '#fff', height: '3.25rem' }}
               >
-                🌿 Season Opens June 2026
+                Shop Now
+                <ArrowRight size={16} />
+              </button>
+            </Link>
+            <Link href="/farm-share">
+              <button
+                className="px-8 rounded-xl text-base font-medium transition-all hover:bg-white/10"
+                style={{
+                  border: '1.5px solid rgba(245,241,232,0.40)',
+                  color: 'var(--cream)',
+                  backgroundColor: 'rgba(245,241,232,0.06)',
+                  height: '3.25rem',
+                }}
+              >
+                Get a Farm Share
+              </button>
+            </Link>
+          </div>
+
+          {/* Trust chips */}
+          <div className="flex flex-wrap justify-center gap-6 blur-fade blur-fade-5">
+            {['No GMO', 'Locally grown', 'No chemicals'].map(t => (
+              <span
+                key={t}
+                className="text-sm flex items-center gap-1.5"
+                style={{ color: 'rgba(191,214,191,0.92)', fontWeight: 400 }}
+              >
+                <span style={{ color: 'var(--orange)' }}>✓</span>
+                {t}
               </span>
-            </div>
-
-            {/* H1 — exact required copy */}
-            <h1
-              className="font-serif blur-fade blur-fade-2"
-              style={{
-                fontSize: 'clamp(2.8rem, 7.5vw, 6.2rem)',
-                color: 'var(--cream)',
-                lineHeight: 1.0,
-                letterSpacing: '-0.025em',
-                marginBottom: '1.5rem',
-              }}
-            >
-              Experience food that<br />
-              tastes like home from{' '}
-              <span style={{ color: 'var(--orange)' }}>your<br />local farm.</span>
-            </h1>
-
-            {/* Subheadline — exact required copy */}
-            <p
-              className="mb-10 blur-fade blur-fade-3"
-              style={{
-                fontSize: 'clamp(1rem, 1.8vw, 1.15rem)',
-                color: 'rgba(245,241,232,0.75)',
-                fontWeight: 300,
-                maxWidth: '520px',
-                lineHeight: 1.65,
-              }}
-            >
-              Discover wholesome, seasonal Afro-heritage vegetables grown fresh in Baden, Ontario.
-              Weekly delivery and pickup available from June through October.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3 mb-10 blur-fade blur-fade-4">
-              <Link href="/shop">
-                <button
-                  className="shimmer-btn h-13 px-8 rounded-xl text-base font-semibold flex items-center gap-2"
-                  style={{ backgroundColor: 'var(--orange)', color: '#fff', height: '3.25rem' }}
-                >
-                  Shop Now
-                  <ArrowRight size={16} />
-                </button>
-              </Link>
-              <Link href="/farm-share">
-                <button
-                  className="h-13 px-8 rounded-xl text-base font-medium transition-all hover:bg-white/10"
-                  style={{
-                    border: '1.5px solid rgba(245,241,232,0.40)',
-                    color: 'var(--cream)',
-                    backgroundColor: 'rgba(245,241,232,0.06)',
-                    height: '3.25rem',
-                  }}
-                >
-                  Get a Farm Share
-                </button>
-              </Link>
-            </div>
-
-            {/* Trust chips — exact required copy */}
-            <div className="flex flex-wrap gap-6 blur-fade blur-fade-5">
-              {['No GMO', 'Locally grown', 'No chemicals'].map(t => (
-                <span
-                  key={t}
-                  className="text-sm flex items-center gap-1.5"
-                  style={{ color: 'rgba(191,214,191,0.90)', fontWeight: 400 }}
-                >
-                  <span style={{ color: 'var(--orange)', fontSize: '0.9rem' }}>✓</span>
-                  {t}
-                </span>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -262,7 +258,99 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 5: WHOLESALE ──────────────────────────── */}
+      {/* ── SECTION 5: FARM SHARE TEASER ──────────────────── */}
+      <section className="py-20 px-4" style={{ backgroundColor: 'var(--soft-green)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-4">
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: 'var(--dark-green)' }}>
+              2026 Season
+            </p>
+            <h2 className="font-serif text-4xl sm:text-5xl mb-3" style={{ color: 'var(--green)' }}>
+              Get a Farm Share.
+            </h2>
+            <p className="text-base max-w-md mx-auto" style={{ color: 'var(--muted-color)', fontWeight: 300 }}>
+              Pre-invest in your farm wallet. No fixed boxes. Shop what you want, when you want it.
+            </p>
+          </div>
+
+          {/* Early bird notice */}
+          <div
+            className="max-w-xl mx-auto mb-10 mt-4 flex items-center gap-2 justify-center px-5 py-2.5 rounded-full text-sm font-medium"
+            style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
+          >
+            <Clock size={14} />
+            Early Bird bonus: {earlyBirdWindow.label} only
+          </div>
+
+          {/* 3 tier cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+            {homepageTiers.map(tier => (
+              <div
+                key={tier.id}
+                className="rounded-2xl p-5 flex flex-col gap-1.5 transition-all hover:-translate-y-0.5"
+                style={{
+                  backgroundColor: tier.highlight ? 'var(--green)' : '#fff',
+                  border: tier.highlight ? '2px solid var(--green)' : '1px solid var(--leaf)',
+                  boxShadow: tier.highlight ? '0 8px 32px rgba(63,111,70,0.18)' : 'none',
+                }}
+              >
+                {tier.badge && (
+                  <span
+                    className="text-xs font-semibold px-2 py-0.5 rounded-full self-start mb-1"
+                    style={{
+                      backgroundColor: tier.highlight ? 'var(--orange)' : 'var(--soft-green)',
+                      color: tier.highlight ? '#fff' : 'var(--dark-green)',
+                    }}
+                  >
+                    {tier.badge}
+                  </span>
+                )}
+                <h3 className="font-serif text-xl" style={{ color: tier.highlight ? '#fff' : 'var(--green)' }}>
+                  {tier.name}
+                </h3>
+                <p
+                  className="font-serif text-3xl font-bold"
+                  style={{ color: tier.highlight ? '#fff' : 'var(--brown)' }}
+                >
+                  ${tier.walletValue}
+                  <span className="text-sm font-normal ml-1" style={{ color: tier.highlight ? 'rgba(255,255,255,0.6)' : 'var(--muted-color)' }}>
+                    wallet
+                  </span>
+                </p>
+                <p className="text-xs" style={{ color: tier.highlight ? 'rgba(255,255,255,0.55)' : 'var(--muted-color)' }}>
+                  Pay ${tier.price} + {tier.bonus}% early bird bonus
+                </p>
+                <p
+                  className="text-xs font-medium mt-0.5"
+                  style={{ color: tier.highlight ? 'rgba(232,125,47,0.95)' : 'var(--orange)' }}
+                >
+                  {tier.checkoutSavings} at checkout
+                </p>
+                <Link
+                  href="/farm-share#tiers"
+                  className="text-xs font-semibold mt-2"
+                  style={{ color: tier.highlight ? 'rgba(255,255,255,0.85)' : 'var(--orange)' }}
+                >
+                  {tier.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/farm-share">
+              <button
+                className="h-12 px-8 rounded-xl text-sm font-semibold border transition-colors hover:bg-white/60"
+                style={{ borderColor: 'var(--green)', color: 'var(--green)' }}
+              >
+                See all 5 share tiers →
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 6: WHOLESALE ──────────────────────────── */}
       <section className="py-24 px-4 relative overflow-hidden" style={{ backgroundColor: 'var(--green)' }}>
         {/* Subtle texture */}
         <div

@@ -1,12 +1,12 @@
 export type Tier = {
   id: string
   name: string
-  price: number
-  bonus: number        // percentage
-  walletValue: number  // price + bonus amount
-  minOrder: number | null
-  savings: string
-  perks: string[]
+  price: number           // upfront investment
+  bonus: number           // % added to wallet — EARLY BIRD ONLY (April 6–20, 2026)
+  walletValue: number     // price + bonus amount (early bird value)
+  minOrder: number | null // null = no minimum
+  checkoutSavings: string // discount applied at checkout when spending wallet
+  perks: string[]         // tier-specific perks (shared perks listed separately)
   highlight: boolean
   badge: string | null
   cta: string
@@ -20,18 +20,15 @@ export const tiers: Tier[] = [
     bonus: 10,
     walletValue: 770,
     minOrder: null,
-    savings: '20% savings',
+    checkoutSavings: 'Up to 20% savings',
     perks: [
       'No order minimum',
-      '20% savings on every order',
-      'Priority harvest access',
-      'Farm community membership',
-      'Exclusive early-bird crops',
-      'Direct farmer line',
+      'Up to 20% savings at checkout',
+      'Priority ordering every week',
     ],
     highlight: false,
     badge: 'Best Value',
-    cta: 'I want this →',
+    cta: 'Get this share →',
   },
   {
     id: 'sustainer',
@@ -40,17 +37,15 @@ export const tiers: Tier[] = [
     bonus: 8,
     walletValue: 540,
     minOrder: null,
-    savings: '8% savings',
+    checkoutSavings: 'Up to 10% savings',
     perks: [
       'No order minimum',
-      '8% savings on every order',
+      'Up to 10% savings at checkout',
       'Priority ordering',
-      'Farm community membership',
-      'Early harvest notifications',
     ],
     highlight: false,
     badge: null,
-    cta: 'I want this →',
+    cta: 'Get this share →',
   },
   {
     id: 'essential',
@@ -59,17 +54,14 @@ export const tiers: Tier[] = [
     bonus: 7,
     walletValue: 321,
     minOrder: null,
-    savings: '7% savings',
+    checkoutSavings: 'Up to 7% savings',
     perks: [
       'No order minimum',
-      'Up to 7% savings',
-      'Priority harvest access',
-      'Farm community membership',
-      'Weekly harvest updates',
+      'Up to 7% savings at checkout',
     ],
     highlight: true,
     badge: 'Most Popular',
-    cta: 'I want this →',
+    cta: 'Get this share →',
   },
   {
     id: 'sampler',
@@ -78,16 +70,14 @@ export const tiers: Tier[] = [
     bonus: 2,
     walletValue: 102,
     minOrder: 60,
-    savings: '5% savings',
+    checkoutSavings: '5% off products',
     perks: [
-      '$60 minimum order',
-      '5% off all orders',
-      'Access to weekly harvest',
-      'Community newsletter',
+      '$60 minimum per order',
+      '5% off products',
     ],
     highlight: false,
     badge: null,
-    cta: 'I want this →',
+    cta: 'Get this share →',
   },
   {
     id: 'alacarte',
@@ -96,18 +86,30 @@ export const tiers: Tier[] = [
     bonus: 0,
     walletValue: 0,
     minOrder: 60,
-    savings: 'No commitment',
+    checkoutSavings: 'Pay as you go',
     perks: [
+      'No upfront payment',
+      'Shop anytime',
       '$60 minimum per order',
-      'Shop freely each week',
-      'No upfront commitment',
-      'Pay as you go',
     ],
     highlight: false,
     badge: null,
     cta: 'Start shopping →',
   },
 ]
+
+// Universal perks included with every paid share (Sampler and above)
+export const sharedPerks = [
+  'Access to our private farm community (Facebook, Instagram & WhatsApp)',
+  'Recipes, cooking inspiration, and seasonal guides',
+  'Early access to the weekly harvest list',
+]
+
+export const earlyBirdWindow = {
+  start: 'April 6, 2026',
+  end: 'April 20, 2026',
+  label: 'Early Bird: April 6 – 20, 2026',
+}
 
 export const pickupHubs = [
   {

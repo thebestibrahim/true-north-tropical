@@ -9,7 +9,7 @@ const steps = [
     icon: CalendarDays,
     title: 'Browse the weekly harvest list',
     description:
-      'Every Sunday we update the shop with exactly what was harvested that week — no guessing, no out-of-stock surprises. Fresh produce, always in season.',
+      'Every Sunday we update the shop with exactly what was harvested that week. No guessing, no surprises. Fresh produce, always in season.',
     detail: 'Updated every Sunday. Order by Tuesday noon.',
   },
   {
@@ -25,7 +25,7 @@ const steps = [
     icon: MapPin,
     title: 'Choose pickup or delivery',
     description:
-      'Select a pickup hub near you — Kitchener, Cambridge, or Baden — or opt for local delivery. We bring the farm to your doorstep.',
+      'Select a pickup hub near Kitchener, Cambridge, or Baden, or opt for local delivery. We bring the farm to your doorstep.',
     detail: 'Pickup: Wed–Sat. Delivery available within 30km of Baden.',
   },
   {
@@ -33,17 +33,17 @@ const steps = [
     icon: Leaf,
     title: 'Enjoy food that tastes right',
     description:
-      'Harvested days — not weeks — before it reaches you. No cold storage, no long-haul shipping. Just real food, grown with care.',
+      'Harvested days before it reaches you, not weeks. No cold storage, no long-haul shipping. Just real food, grown with care.',
     detail: 'Guaranteed fresh. If it\'s not right, we make it right.',
   },
 ]
 
 const whyItems = [
-  'No GMO seeds — ever',
+  'No GMO seeds, ever',
   'No synthetic pesticides or herbicides',
   'Heirloom and heritage varieties',
   'Grown in Baden, Ontario soil',
-  'EFAO member — certified ecological',
+  'EFAO member, certified ecological',
   'Harvested to order, not to shelf life',
 ]
 
@@ -78,14 +78,13 @@ export default function HowItWorksPage() {
               letterSpacing: '-0.025em',
             }}
           >
-            From our farm to<br />your table — simply.
+            From our farm<br />to your table.
           </h1>
           <p
             className="text-lg mx-auto"
             style={{ color: 'var(--muted-color)', fontWeight: 300, maxWidth: '520px', lineHeight: 1.7 }}
           >
-            Ordering fresh Afro-heritage produce should be as easy as shopping at the market —
-            with the quality of knowing exactly who grew your food.
+            Ordering fresh Afro-heritage produce should be as easy as shopping at the market, with the added joy of knowing exactly who grew your food.
           </p>
         </div>
       </section>
@@ -166,8 +165,7 @@ export default function HowItWorksPage() {
                 className="mb-8 leading-relaxed"
                 style={{ color: 'rgba(245,241,232,0.70)', fontWeight: 300, fontSize: '1.05rem' }}
               >
-                Every variety we grow is chosen because it tastes right — not because it ships well
-                or looks good under fluorescent lights. This is food grown for people who know the difference.
+                Every variety we grow is chosen because it tastes right, not because it ships well or looks good under fluorescent lights. This is food grown for people who know the difference.
               </p>
               <ul className="space-y-3">
                 {whyItems.map(item => (
