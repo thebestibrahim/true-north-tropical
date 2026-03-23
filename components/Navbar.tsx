@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useCart } from './CartContext'
 import CartDrawer from './CartDrawer'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import { Menu, ShoppingBag, X, Leaf } from 'lucide-react'
+import { Menu, ShoppingBag, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/',               label: 'Home' },
@@ -50,26 +51,15 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <div
-              className="w-8 h-8 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: 'var(--green)' }}
-            >
-              <Leaf size={16} color="#F5F1E8" />
-            </div>
-            <span
-              className="font-serif text-lg leading-tight hidden sm:block"
-              style={{ color: 'var(--green)' }}
-            >
-              True North Tropical
-            </span>
-            <span
-              className="font-serif text-lg leading-tight sm:hidden"
-              style={{ color: 'var(--green)' }}
-            >
-              TNT
-            </span>
-            {/* [SWAP: logo image] */}
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <Image
+              src="/tnt-logo.webp"
+              alt="True North Tropical"
+              width={120}
+              height={120}
+              className="h-14 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav links */}
@@ -159,8 +149,8 @@ export default function Navbar() {
         <SheetContent side="left" className="w-72 p-0" style={{ backgroundColor: '#FFFFFF' }}>
           <SheetHeader className="px-6 pt-6 pb-4 border-b" style={{ borderColor: 'var(--leaf)' }}>
             <div className="flex items-center justify-between">
-              <SheetTitle className="font-serif text-lg" style={{ color: 'var(--green)' }}>
-                True North Tropical
+              <SheetTitle>
+                <Image src="/tnt-logo.webp" alt="True North Tropical" width={120} height={120} className="h-14 w-auto" />
               </SheetTitle>
               <button onClick={() => setMobileOpen(false)}>
                 <X size={18} style={{ color: 'var(--muted-color)' }} />

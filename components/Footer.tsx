@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Instagram, Facebook, Youtube, Leaf } from 'lucide-react'
+import Image from 'next/image'
+import { Instagram, Facebook, Youtube } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -11,16 +12,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* About */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: 'rgba(245,241,232,0.15)' }}
-              >
-                <Leaf size={16} style={{ color: 'var(--cream)' }} />
-              </div>
-              <span className="font-serif text-lg" style={{ color: 'var(--cream)' }}>
-                True North Tropical
-              </span>
+            <div className="mb-4">
+              {/* Logo inverted to white for the dark green footer */}
+              <Image
+                src="/tnt-logo.webp"
+                alt="True North Tropical"
+                width={200}
+                height={200}
+                className="h-28 w-auto"
+                style={{ filter: 'brightness(0) invert(1)', opacity: 0.95 }}
+              />
             </div>
             <p
               className="text-sm leading-relaxed"
