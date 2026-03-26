@@ -1,21 +1,63 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useCart } from './CartContext'
 import CartDrawer from './CartDrawer'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import { Menu, ShoppingBag, X } from 'lucide-react'
+import { Menu, ShoppingBag, ChevronDown, User } from 'lucide-react'
+import CountdownBadge from './CountdownBadge'
+
+const shopDropdown = [
+  { href: '/shop',              label: 'All Products' },
+  { href: '/shop',              label: 'Produce' },
+  { href: '/farm-share',        label: 'Farm Share' },
+  { href: '/shop#nursery',      label: 'Nursery' },
+  { href: '/shop#garden',       label: 'Garden Consult' },
+  { href: '/shop#gift-cards',   label: 'Gift Cards' },
+]
+
+const exploreDropdown = [
+  { href: '/explore',                     label: 'All Articles' },
+  { href: '/explore?cat=recipe',          label: 'Recipes' },
+  { href: '/explore?cat=ingredient',      label: 'Ingredient Guides' },
+  { href: '/explore?cat=farm-story',      label: 'Farm Stories' },
+  { href: '/explore?cat=csa',             label: 'CSA Guide' },
+]
 
 const navLinks = [
-  { href: '/',               label: 'Home' },
-  { href: '/how-it-works',   label: 'How it works' },
-  { href: '/about',          label: 'About' },
-  { href: '/explore',        label: 'Explore' },
+  { href: '/',             label: 'Home',       dropdown: null },
+  { href: '/how-it-works', label: 'How it works', dropdown: null },
+  { href: '/shop',         label: 'Shop',       dropdown: shopDropdown },
+  { href: '/about',        label: 'About',      dropdown: null },
+  { href: '/explore',      label: 'Explore',    dropdown: exploreDropdown },
 ]
+
+function DropdownMenu({ items }: { items: { href: string; label: string }[] }) {
+  return (
+    <div
+      className="absolute top-full left-1/2 -translate-x-1/2 mt-2 py-2 rounded-2xl shadow-lg min-w-[180px]"
+      style={{
+        backgroundColor: '#FFFFFF',
+        border: '1px solid var(--leaf)',
+        zIndex: 100,
+      }}
+    >
+      {items.map(item => (
+        <Link
+          key={item.href}
+          href={item.href}
+          className="block px-4 py-2 text-sm transition-colors hover:bg-[var(--soft-green)]"
+          style={{ color: 'var(--green)', fontFamily: 'var(--font-sans)' }}
+        >
+          {item.label}
+        </Link>
+      ))}
+    </div>
+  )
+}
 
 export default function Navbar() {
   const { itemCount } = useCart()
@@ -24,6 +66,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [prevCount, setPrevCount] = useState(0)
   const [badgePulse, setBadgePulse] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 80)
@@ -38,6 +82,15 @@ export default function Navbar() {
     }
     setPrevCount(itemCount)
   }, [itemCount, prevCount])
+
+  function handleMouseEnter(label: string) {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setOpenDropdown(label)
+  }
+
+  function handleMouseLeave() {
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120)
+  }
 
   return (
     <>
@@ -65,34 +118,43 @@ export default function Navbar() {
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map(link => (
-              <Link
+              <div
                 key={link.href}
-                href={link.href}
-                className="text-sm font-medium transition-colors hover:text-[var(--orange)]"
-                style={{
-                  color: 'var(--green)',
-                  fontFamily: 'var(--font-sans)',
-                }}
+                className="relative"
+                onMouseEnter={() => link.dropdown && handleMouseEnter(link.label)}
+                onMouseLeave={() => link.dropdown && handleMouseLeave()}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-[var(--orange)]"
+                  style={{
+                    color: 'var(--green)',
+                    fontFamily: 'var(--font-sans)',
+                  }}
+                >
+                  {link.label}
+                  {link.dropdown && (
+                    <ChevronDown
+                      size={13}
+                      className="transition-transform"
+                      style={{
+                        transform: openDropdown === link.label ? 'rotate(180deg)' : 'rotate(0deg)',
+                        color: 'var(--muted-color)',
+                      }}
+                    />
+                  )}
+                </Link>
+                {link.dropdown && openDropdown === link.label && (
+                  <DropdownMenu items={link.dropdown} />
+                )}
+              </div>
             ))}
           </div>
 
-          {/* Right: Badge + CTA + Cart */}
+          {/* Right: Countdown + CTA + Cart */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Season badge */}
-            <Badge
-              className="hidden lg:flex text-xs px-3 py-1"
-              style={{
-                backgroundColor: 'var(--soft-green)',
-                color: 'var(--dark-green)',
-                border: '1px solid var(--leaf)',
-                fontFamily: 'var(--font-sans)',
-              }}
-            >
-              🌿 Season Opens June 2026
-            </Badge>
+            {/* Countdown / season badge */}
+            <CountdownBadge className="hidden lg:flex" />
 
             {/* Farm share CTA */}
             <Link href="/farm-share" className="hidden sm:block">
@@ -107,6 +169,15 @@ export default function Navbar() {
               >
                 Get Farm Share
               </Button>
+            </Link>
+
+            {/* Sign in */}
+            <Link
+              href="/login"
+              className="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center transition-colors hover:bg-[var(--soft-green)]"
+              aria-label="Sign in"
+            >
+              <User size={20} style={{ color: 'var(--green)' }} />
             </Link>
 
             {/* Cart button */}
@@ -148,44 +219,47 @@ export default function Navbar() {
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
         <SheetContent side="left" className="w-72 p-0" style={{ backgroundColor: '#FFFFFF' }}>
           <SheetHeader className="px-6 pt-6 pb-4 border-b" style={{ borderColor: 'var(--leaf)' }}>
-            <div className="flex items-center justify-between">
-              <SheetTitle>
-                <Image src="/tnt-logo.webp" alt="True North Tropical" width={120} height={120} className="h-14 w-auto" />
-              </SheetTitle>
-              <button onClick={() => setMobileOpen(false)}>
-                <X size={18} style={{ color: 'var(--muted-color)' }} />
-              </button>
-            </div>
+            <SheetTitle>
+              <Image src="/tnt-logo.webp" alt="True North Tropical" width={120} height={120} className="h-14 w-auto" />
+            </SheetTitle>
             <p className="text-xs" style={{ color: 'var(--muted-color)', fontFamily: 'var(--font-sans)' }}>
               🌿 Grown in Baden, Ontario
             </p>
           </SheetHeader>
 
-          <nav className="px-6 py-6 space-y-1">
+          <nav className="px-6 py-4 space-y-1">
             {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center h-11 text-base font-medium rounded-lg px-3 transition-colors hover:bg-[var(--soft-green)]"
-                style={{ color: 'var(--green)', fontFamily: 'var(--font-sans)' }}
-              >
-                {link.label}
-              </Link>
+              <div key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center h-11 text-base font-medium rounded-lg px-3 transition-colors hover:bg-[var(--soft-green)]"
+                  style={{ color: 'var(--green)', fontFamily: 'var(--font-sans)' }}
+                >
+                  {link.label}
+                </Link>
+                {/* Mobile sub-items for Shop */}
+                {link.dropdown && link.label === 'Shop' && (
+                  <div className="ml-3 mt-1 mb-2 space-y-0.5">
+                    {link.dropdown.slice(1).map(sub => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center h-8 text-sm rounded-lg px-3 transition-colors hover:bg-[var(--soft-green)]"
+                        style={{ color: 'var(--muted-color)', fontFamily: 'var(--font-sans)' }}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
           <div className="px-6 pb-6 border-t pt-4" style={{ borderColor: 'var(--leaf)' }}>
-            <Badge
-              className="w-full justify-center text-xs py-2 mb-4"
-              style={{
-                backgroundColor: 'var(--soft-green)',
-                color: 'var(--dark-green)',
-                border: '1px solid var(--leaf)',
-              }}
-            >
-              🌿 Season Opens June 2026
-            </Badge>
+            <CountdownBadge className="w-full justify-center text-xs py-2 mb-4" />
             <Link href="/farm-share" onClick={() => setMobileOpen(false)}>
               <Button
                 className="w-full h-11 shimmer-btn"
@@ -194,6 +268,24 @@ export default function Navbar() {
                 Get Farm Share
               </Button>
             </Link>
+            <div className="mt-4 flex gap-2">
+              <Link
+                href="/login"
+                onClick={() => setMobileOpen(false)}
+                className="flex-1 h-9 rounded-xl text-sm font-medium flex items-center justify-center border transition-colors hover:bg-[var(--soft-green)]"
+                style={{ borderColor: 'var(--green)', color: 'var(--green)' }}
+              >
+                Sign in
+              </Link>
+              <Link
+                href="/signup"
+                onClick={() => setMobileOpen(false)}
+                className="flex-1 h-9 rounded-xl text-sm font-medium flex items-center justify-center"
+                style={{ backgroundColor: 'var(--green)', color: '#fff' }}
+              >
+                Sign up
+              </Link>
+            </div>
             <div className="mt-4 text-xs space-y-1" style={{ color: 'var(--muted-color)' }}>
               <p>📧 truenorthtropical@gmail.com</p>
               <p>📞 226-868-3651</p>

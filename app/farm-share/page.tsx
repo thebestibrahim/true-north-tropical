@@ -5,7 +5,7 @@ import Image from 'next/image'
 import TierCard from '@/components/TierCard'
 import NewsletterSection from '@/components/NewsletterSection'
 import { tiers, pickupHubs, sharedPerks, earlyBirdWindow } from '@/lib/tiers'
-import { ArrowDown, Check, X, Clock, Banknote, Smartphone } from 'lucide-react'
+import { ArrowDown, ArrowRight, Check, Clock, Banknote, Smartphone } from 'lucide-react'
 
 const howItWorks = [
   {
@@ -34,14 +34,15 @@ const isForYouYes = [
   'You cook African, Caribbean, or diaspora food regularly',
   'You want fresher produce than any grocery store can offer',
   'You like knowing your farmer personally',
-  'You want choice, not a fixed box of vegetables you didn\'t pick',
+  'You want flexibility — shop what you want, when you want',
   'You care about where your food comes from',
+  'You want to save money by pre-loading your wallet',
 ]
 
-const isForYouNo = [
-  'You want a fixed weekly box with no decisions',
-  'You only cook European or North American cuisine',
-  'You need delivery options outside our current hubs',
+const notSureItems = [
+  'You prefer buying as you go with no commitment',
+  'You are not sure yet how much you will order',
+  'You just want to try the produce first',
 ]
 
 // Anchored display order: Bounty first (anchoring effect), then descending
@@ -350,37 +351,59 @@ export default function FarmSharePage() {
             Is this for you?
           </h2>
           <div className="grid sm:grid-cols-2 gap-8">
+            {/* Great fit — CTA card */}
             <div
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: '#fff', border: '1px solid var(--leaf)' }}
+              className="p-7 rounded-2xl flex flex-col"
+              style={{ backgroundColor: 'var(--green)', border: '2px solid var(--green)' }}
             >
-              <p className="text-sm font-semibold mb-4 uppercase tracking-wider" style={{ color: 'var(--dark-green)' }}>
-                Great fit ✓
+              <p className="text-xs font-semibold mb-4 uppercase tracking-wider" style={{ color: 'var(--orange)' }}>
+                Farm share is for you ✓
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-3 flex-1">
                 {isForYouYes.map(item => (
                   <li key={item} className="flex items-start gap-2">
-                    <Check size={15} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--green)' }} />
-                    <span className="text-sm" style={{ color: 'var(--foreground)' }}>{item}</span>
+                    <Check size={15} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--leaf)' }} />
+                    <span className="text-sm" style={{ color: 'var(--cream)' }}>{item}</span>
                   </li>
                 ))}
               </ul>
+              <Link href="#tiers" className="mt-6">
+                <button
+                  className="shimmer-btn w-full h-11 rounded-xl text-sm font-semibold flex items-center justify-center gap-2"
+                  style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
+                >
+                  Choose your share <ArrowRight size={15} />
+                </button>
+              </Link>
             </div>
+
+            {/* Not sure — redirect to shop */}
             <div
-              className="p-6 rounded-2xl"
+              className="p-7 rounded-2xl flex flex-col"
               style={{ backgroundColor: '#fff', border: '1px solid var(--leaf)' }}
             >
-              <p className="text-sm font-semibold mb-4 uppercase tracking-wider" style={{ color: 'var(--muted-color)' }}>
-                Probably not for you ✗
+              <p className="text-xs font-semibold mb-4 uppercase tracking-wider" style={{ color: 'var(--muted-color)' }}>
+                Not ready to commit?
               </p>
-              <ul className="space-y-3">
-                {isForYouNo.map(item => (
+              <ul className="space-y-3 flex-1">
+                {notSureItems.map(item => (
                   <li key={item} className="flex items-start gap-2">
-                    <X size={15} className="flex-shrink-0 mt-0.5" style={{ color: '#DC2626', opacity: 0.6 }} />
+                    <span className="flex-shrink-0 mt-0.5 text-sm" style={{ color: 'var(--muted-color)' }}>→</span>
                     <span className="text-sm" style={{ color: 'var(--muted-color)' }}>{item}</span>
                   </li>
                 ))}
               </ul>
+              <p className="text-sm mt-4 mb-4" style={{ color: 'var(--green)', fontWeight: 300, lineHeight: 1.6 }}>
+                No problem. Head to the shop and buy exactly what you want, one order at a time. No wallet, no commitment.
+              </p>
+              <Link href="/shop">
+                <button
+                  className="w-full h-11 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-colors hover:bg-[var(--soft-green)]"
+                  style={{ border: '1.5px solid var(--green)', color: 'var(--green)' }}
+                >
+                  Browse the shop <ArrowRight size={15} />
+                </button>
+              </Link>
             </div>
           </div>
         </div>

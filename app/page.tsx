@@ -403,7 +403,7 @@ export default function HomePage() {
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-3">
-                <Link href="/farm-share">
+                <Link href="/contact?type=wholesale">
                   <button
                     className="shimmer-btn h-12 px-6 rounded-xl text-sm font-semibold flex items-center gap-2"
                     style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
@@ -424,7 +424,7 @@ export default function HomePage() {
                     <ChevronRight size={14} />
                   </button>
                 </Link>
-                <Link href="/faq#contact">
+                <Link href="/contact">
                   <button
                     className="h-12 px-5 rounded-xl text-sm font-medium flex items-center gap-1.5 transition-all hover:bg-white/10"
                     style={{

@@ -2,13 +2,13 @@ const items = [
   { icon: '🌱', text: 'No Synthetic Chemicals' },
   { icon: '🌾', text: 'Heirloom & Open-Pollinated' },
   { icon: '📍', text: 'Grown in Ontario' },
-  { icon: '🏅', text: 'EFAO Member' },
   { icon: '🚚', text: 'Weekly Delivery' },
   { icon: '✋', text: 'Hand Harvested' },
   { icon: '🌿', text: 'Afro-Heritage Crops' },
   { icon: '❄️', text: 'Peak Freshness Guaranteed' },
   { icon: '🫶', text: 'Community Farm' },
   { icon: '🌍', text: 'Rooted in Culture' },
+  { icon: '🚫', text: 'No GMO' },
 ]
 
 // Doubled for seamless loop
