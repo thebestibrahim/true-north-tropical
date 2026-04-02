@@ -5,27 +5,28 @@ import NewsletterSection from '@/components/NewsletterSection'
 
 const howWeGrow = [
   { icon: '🌿', label: 'No synthetic chemicals', desc: 'Ever.' },
-  { icon: '🌾', label: 'Heirloom & open-pollinated seeds', desc: 'Preserving biodiversity.' },
-  { icon: '✋', label: 'Hand harvested & inspected', desc: 'Every single bunch.' },
-  { icon: '🏅', label: 'EFAO member', desc: 'Ecological Farmers Assoc. of Ontario.' },
-  { icon: '🌍', label: 'Cultural heritage first', desc: 'Grown for diaspora communities.' },
+  { icon: '🚫', label: 'No GMO', desc: 'Only heirloom and open-pollinated seeds.' },
+  { icon: '🌾', label: 'Heirloom seeds', desc: 'Preserving biodiversity.' },
+  { icon: '🌍', label: 'Healthy living soil', desc: 'EFAO certified practices.' },
+  { icon: '📍', label: 'Locally grown', desc: 'Right here in Baden, Ontario.' },
+  { icon: '✋', label: 'Hand harvested', desc: 'Every single bunch inspected.' },
 ]
 
-const harvestCalendar: { crop: string; jun?: string; jul?: string; aug?: string; sep?: string }[] = [
-  { crop: 'Waterleaf',         jun: '✓', jul: '✓', aug: '✓', sep: '✓' },
-  { crop: 'Ugu Leaf',          jun: '✓', jul: '✓', aug: '✓', sep: '✓' },
-  { crop: 'Lagos Spinach',     jun: '✓', jul: '✓', aug: '✓', sep: '' },
-  { crop: 'Callaloo/Amaranth', jun: '✓', jul: '✓', aug: '✓', sep: '✓' },
-  { crop: 'Bitterleaf',        jun: '',  jul: '✓', aug: '✓', sep: '✓' },
-  { crop: 'Habanero Peppers',  jun: '',  jul: '',  aug: '✓', sep: '✓' },
-  { crop: 'Cameroon Pepper',   jun: '',  jul: '',  aug: '✓', sep: '✓' },
-  { crop: 'Garden Egg',        jun: '',  jul: '✓', aug: '✓', sep: '✓' },
-  { crop: 'African Corn',      jun: '',  jul: '✓', aug: '✓', sep: '' },
-  { crop: 'Sweet Potato',      jun: '',  jul: '',  aug: '✓', sep: '✓' },
-  { crop: 'Ginger',            jun: '',  jul: '',  aug: '✓', sep: '✓' },
-  { crop: 'Scent Leaf',        jun: '✓', jul: '✓', aug: '✓', sep: '✓' },
-  { crop: 'Kiwano Melon',      jun: '',  jul: '',  aug: '✓', sep: '✓' },
-  { crop: 'Seeded Watermelon', jun: '',  jul: '',  aug: '✓', sep: '✓' },
+const harvestCalendar: { crop: string; jun?: string; jul?: string; aug?: string; sep?: string; oct?: string }[] = [
+  { crop: 'Water Leaves',        jun: '✓', jul: '✓', aug: '✓', sep: '✓', oct: '' },
+  { crop: 'Tete / Callaloo',     jun: '✓', jul: '✓', aug: '✓', sep: '✓', oct: '' },
+  { crop: 'Shoko (Lagos Spinach)', jun: '✓', jul: '✓', aug: '✓', sep: '', oct: '' },
+  { crop: 'Bitter Leaf',         jun: '',  jul: '✓', aug: '✓', sep: '✓', oct: '✓' },
+  { crop: 'Jute Leaves',         jun: '✓', jul: '✓', aug: '✓', sep: '✓', oct: '' },
+  { crop: 'Okra',                jun: '',  jul: '',  aug: '✓', sep: '✓', oct: '✓' },
+  { crop: 'Habanero',            jun: '',  jul: '',  aug: '✓', sep: '✓', oct: '✓' },
+  { crop: 'Cameroon Pepper',     jun: '',  jul: '',  aug: '✓', sep: '✓', oct: '✓' },
+  { crop: 'African Corn',        jun: '',  jul: '✓', aug: '✓', sep: '', oct: '' },
+  { crop: 'Sweet Potato',        jun: '',  jul: '',  aug: '✓', sep: '✓', oct: '✓' },
+  { crop: 'Squash Leaves / Ugu', jun: '✓', jul: '✓', aug: '✓', sep: '✓', oct: '' },
+  { crop: 'Curry Leaves',        jun: '✓', jul: '✓', aug: '✓', sep: '✓', oct: '✓' },
+  { crop: 'Watermelon',          jun: '',  jul: '',  aug: '✓', sep: '✓', oct: '' },
+  { crop: 'Cherry Tomato',       jun: '',  jul: '✓', aug: '✓', sep: '✓', oct: '' },
 ]
 
 export default function AboutPage() {
@@ -34,14 +35,13 @@ export default function AboutPage() {
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className="relative h-[65svh] min-h-[360px] flex items-end overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&auto=format&fit=crop"
+          src="/farm-hero.webp"
           alt="True North Tropical farm in Baden Ontario"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
-        {/* [SWAP: full bleed farm landscape photo] */}
         <div
           className="absolute inset-0"
           style={{
@@ -57,12 +57,12 @@ export default function AboutPage() {
               lineHeight: 1.1,
             }}
           >
-            Growing the real<br />flavours of home.
+            A small farm with<br />a simple idea.
           </h1>
         </div>
       </section>
 
-      {/* ── WHY ───────────────────────────────────────────── */}
+      {/* ── WHY WE FARM ───────────────────────────────────── */}
       <section
         className="py-20 px-4"
         style={{ backgroundColor: '#FFFFFF' }}
@@ -72,13 +72,19 @@ export default function AboutPage() {
             className="text-sm font-medium uppercase tracking-widest mb-5"
             style={{ color: 'var(--orange)', fontFamily: 'var(--font-sans)' }}
           >
-            Why we grow
+            Why we farm
           </p>
+          <h2
+            className="font-serif text-3xl sm:text-4xl mb-6"
+            style={{ color: 'var(--green)' }}
+          >
+            Quality food should not be this hard to find.
+          </h2>
           <p
             className="text-lg leading-relaxed mb-10"
             style={{ color: 'var(--muted-color)', fontFamily: 'var(--font-sans)', fontWeight: 300 }}
           >
-            Millions of Africans and Caribbean people in Canada wake up every day wanting to cook the food they grew up with — and can&apos;t find it. What they find is wilted, frozen, or grown without care. We started True North Tropical to fix that.
+            Many families rely on vegetables shipped thousands of miles before reaching the store. By the time those vegetables arrive, the flavour is gone and much of the nutrition is lost. Others settle for substitutes only to get disappointing results. We started True North Tropical to change that. We grow culturally meaningful vegetables right here in Ontario so families can cook the meals they grew up with using fresh ingredients. Food should feel familiar, nourishing, and celebrated — not tolerated.
           </p>
 
           {/* Pull quote */}
@@ -94,7 +100,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── ARAMIDE'S STORY ───────────────────────────────── */}
+      {/* ── FROM BACKYARD TO FARM ─────────────────────────── */}
       <section
         className="py-20 px-4"
         style={{ backgroundColor: 'var(--cream)' }}
@@ -104,13 +110,12 @@ export default function AboutPage() {
             {/* Portrait */}
             <div className="relative h-[500px] rounded-3xl overflow-hidden blur-fade blur-fade-1">
               <Image
-                src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?w=800&auto=format&fit=crop"
-                alt="Aramide, founder of True North Tropical"
+                src="/farm-hero.webp"
+                alt="True North Tropical farm"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              {/* [SWAP: Aramide portrait or farm action photo] */}
               <div
                 className="absolute inset-0"
                 style={{ background: 'linear-gradient(to top, rgba(63,111,70,0.15) 0%, transparent 60%)' }}
@@ -123,13 +128,13 @@ export default function AboutPage() {
                 className="text-sm font-medium uppercase tracking-widest mb-3"
                 style={{ color: 'var(--orange)', fontFamily: 'var(--font-sans)' }}
               >
-                Aramide&apos;s story
+                From backyard garden to farm
               </p>
               <h2
                 className="font-serif text-4xl mb-6"
                 style={{ color: 'var(--green)' }}
               >
-                From boardroom<br />to farm.
+                Know your farmer.
               </h2>
 
               <div
@@ -137,13 +142,19 @@ export default function AboutPage() {
                 style={{ color: 'var(--muted-color)', fontFamily: 'var(--font-sans)', fontWeight: 300 }}
               >
                 <p>
-                  After years in the corporate world, Aramide found herself increasingly disconnected — not just from nature, but from the foods that grounded her. The ugu leaves she ate growing up in Nigeria. The scent leaf her grandmother grew outside the kitchen.
+                  True North Tropical began as a backyard garden. We were simply trying to grow the foods we missed. When crops like garden egg and bitterleaf thrived in our garden, we realized something important. These foods can grow here too.
                 </p>
                 <p>
-                  In 2019, she planted her first seeds in a Baden backyard. What started as a personal project became something much bigger when neighbours and friends started asking for extra bunches.
+                  Today the farm grows culturally meaningful vegetables for families who want food that feels familiar, nourishing, and full of flavour.
                 </p>
                 <p>
-                  Through COVID, she kept growing. She joined the EFAO. She found land. And now she grows food for hundreds of families across Waterloo Region.
+                  Hi, I&apos;m Aramide. I didn&apos;t grow up on a farm, but I grew up with real food. Meals made from fresh ingredients. Seeds passed down through generations. Flavours that meant something.
+                </p>
+                <p>
+                  When I moved to Canada, finding those foods fresh became difficult. So I started growing them. Today True North Tropical is a small farm growing vegetables that keep traditions alive and bring real flavour back to the table.
+                </p>
+                <p>
+                  If you&apos;re searching for real fresh okra, callaloo, eggplant, and other Afro-heritage vegetables, I&apos;d be honoured to be your farmer.
                 </p>
               </div>
 
@@ -154,7 +165,7 @@ export default function AboutPage() {
               >
                 {[
                   { stat: '2019', label: 'Started in a backyard' },
-                  { stat: '2020', label: 'Grew through COVID' },
+                  { stat: 'Baden', label: 'Ontario, Canada' },
                   { stat: '500+', label: 'Families served' },
                 ].map(item => (
                   <div key={item.label} className="text-center">
@@ -214,6 +225,7 @@ export default function AboutPage() {
 
       {/* ── HARVEST CALENDAR ──────────────────────────────── */}
       <section
+        id="harvest-calendar"
         className="py-16 px-4"
         style={{ backgroundColor: '#FFFFFF' }}
       >
@@ -228,7 +240,7 @@ export default function AboutPage() {
             className="mb-8 text-sm"
             style={{ color: 'var(--muted-color)', fontFamily: 'var(--font-sans)' }}
           >
-            2026 season — June through September
+            2026 season — June through October
           </p>
 
           <div className="overflow-x-auto rounded-2xl border" style={{ borderColor: 'var(--leaf)' }}>
@@ -238,7 +250,7 @@ export default function AboutPage() {
                   <th className="text-left px-4 py-3 font-serif text-base font-normal" style={{ color: 'var(--cream)' }}>
                     Crop
                   </th>
-                  {['Jun', 'Jul', 'Aug', 'Sep'].map(m => (
+                  {['Jun', 'Jul', 'Aug', 'Sep', 'Oct'].map(m => (
                     <th key={m} className="px-4 py-3 font-medium text-center" style={{ color: 'var(--cream)' }}>
                       {m}
                     </th>
@@ -256,10 +268,10 @@ export default function AboutPage() {
                     <td className="px-4 py-3 font-medium" style={{ color: 'var(--foreground)' }}>
                       {row.crop}
                     </td>
-                    {[row.jun, row.jul, row.aug, row.sep].map((val, j) => (
+                    {[row.jun, row.jul, row.aug, row.sep, row.oct].map((val, j) => (
                       <td key={j} className="px-4 py-3 text-center" style={{ color: 'var(--green)' }}>
                         {val || (
-                          <span style={{ color: 'var(--leaf)' }}>—</span>
+                          <span style={{ color: 'var(--leaf)' }}></span>
                         )}
                       </td>
                     ))}
@@ -285,7 +297,7 @@ export default function AboutPage() {
               className="shimmer-btn h-12 px-6 rounded-xl text-base font-semibold"
               style={{ backgroundColor: 'var(--orange)', color: '#FFFFFF', fontFamily: 'var(--font-sans)' }}
             >
-              Shop Now →
+              Shop Now
             </button>
           </Link>
           <Link href="/farm-share">

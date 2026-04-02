@@ -17,7 +17,7 @@ export default function NewsletterSection() {
   return (
     <section
       className="py-20 px-4"
-      style={{ backgroundColor: 'var(--dark-green)' }}
+      style={{ backgroundColor: 'var(--green)' }}
     >
       <div className="max-w-2xl mx-auto text-center">
         {/* Eyebrow */}

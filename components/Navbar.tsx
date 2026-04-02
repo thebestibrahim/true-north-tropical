@@ -6,8 +6,8 @@ import Image from 'next/image'
 import { useCart } from './CartContext'
 import CartDrawer from './CartDrawer'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import { Menu, ShoppingBag, ChevronDown, User } from 'lucide-react'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet'
+import { Menu, ShoppingBag, ChevronDown, User, X } from 'lucide-react'
 import CountdownBadge from './CountdownBadge'
 
 const shopDropdown = [
@@ -217,14 +217,21 @@ export default function Navbar() {
 
       {/* Mobile Nav Drawer */}
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent side="left" className="w-72 p-0" style={{ backgroundColor: '#FFFFFF' }}>
-          <SheetHeader className="px-6 pt-6 pb-4 border-b" style={{ borderColor: 'var(--leaf)' }}>
+        <SheetContent side="left" className="w-72 p-0" style={{ backgroundColor: '#FFFFFF' }} showCloseButton={false}>
+          <SheetHeader className="px-6 pt-6 pb-4 border-b relative" style={{ borderColor: 'var(--leaf)' }}>
             <SheetTitle>
               <Image src="/tnt-logo.webp" alt="True North Tropical" width={120} height={120} className="h-14 w-auto" />
             </SheetTitle>
             <p className="text-xs" style={{ color: 'var(--muted-color)', fontFamily: 'var(--font-sans)' }}>
               🌿 Grown in Baden, Ontario
             </p>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[var(--soft-green)] transition-colors"
+              aria-label="Close menu"
+            >
+              <X size={18} style={{ color: 'var(--green)' }} />
+            </button>
           </SheetHeader>
 
           <nav className="px-6 py-4 space-y-1">

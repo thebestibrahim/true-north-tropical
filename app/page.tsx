@@ -18,21 +18,21 @@ const homepageTiers = ['bounty', 'essential', 'sampler'].map(id => tiers.find(t 
 const testimonials = [
   {
     quote:
-      'Finally, waterleaf and ugu that actually taste the way they should. I drove from Brampton the first time. Now they deliver.',
-    name: 'Folake',
-    city: 'Kitchener, ON',
+      'First time trying their corn. Thoroughly enjoyed it. As a Nigerian, I made what we call "Adalu" with the corn. Definitely coming back for more! I got free organic apples too as a first time buyer! Thank you True North Tropical!',
+    name: 'Onize Moses',
+    city: 'Google Review',
   },
   {
     quote:
-      "I grew up eating callaloo in Jamaica. Every bunch from this farm takes me right back. Nothing like this anywhere else in the region.",
-    name: 'David',
-    city: 'Guelph, ON',
+      "I had missed Nigerian corn so much and I was so happy to have gotten some with True North Tropical! I got some calaloo too and made efo riro! I'm so looking forward to the next season already!",
+    name: 'Olukorede Leo',
+    city: 'Google Review',
   },
   {
     quote:
-      'The Cameroon pepper is unreal. I had to call Aramide to ask how she does it. The answer is: she just cares.',
-    name: 'Chidi',
-    city: 'Cambridge, ON',
+      'Thanks for the corn. Finally got something like home.',
+    name: 'Sandra Omozee',
+    city: 'Google Review',
   },
 ]
 
@@ -173,13 +173,13 @@ export default function HomePage() {
                 className="text-sm font-medium uppercase tracking-widest mb-2"
                 style={{ color: 'var(--orange)' }}
               >
-                Fresh from the field
+                What we grow
               </p>
               <h2 className="font-serif text-4xl sm:text-5xl" style={{ color: 'var(--green)' }}>
-                This week&apos;s harvest.
+                Food that reflects the people who live here.
               </h2>
               <p className="mt-2 text-base" style={{ color: 'var(--muted-color)', fontWeight: 300 }}>
-                Updated every Sunday. Order by Tuesday noon.
+                Harvested at peak flavour just for you.
               </p>
             </div>
             <Link
@@ -238,7 +238,7 @@ export default function HomePage() {
               className="text-sm font-medium uppercase tracking-widest mb-3"
               style={{ color: 'var(--orange)' }}
             >
-              From our community
+              5.0 on Google Reviews
             </p>
             <h2 className="font-serif text-4xl sm:text-5xl" style={{ color: 'var(--green)' }}>
               People who know the difference.
