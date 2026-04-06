@@ -6,7 +6,7 @@ export type CartItem = {
   id: string
   name: string
   price: number
-  unit: 'kg' | 'bunch' | 'each'
+  unit: 'kg' | 'bunch' | 'each' | 'portion'
   qty: number
   image: string
 }

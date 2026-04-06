@@ -23,7 +23,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 13.00,
     description: 'Tall cereal crop with juicy, sugar-rich stalks. Drought-tolerant, high in antioxidants and gluten-free.',
-    image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&auto=format&fit=crop',
     tags: ['Seasonal', 'Heirloom'],
   },
   {
@@ -34,7 +34,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 19.50,
     description: 'Gluten-free whole grains for porridges and flatbreads. High in protein, iron, and B vitamins.',
-    image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1569347806153-df40ae5dc4e0?w=600&auto=format&fit=crop',
     tags: ['Heirloom'],
   },
   {
@@ -45,7 +45,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 19.50,
     description: 'Organically grown. Sticky when cooked with large, sometimes purple kernels.',
-    image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&auto=format&fit=crop',
     tags: ['Rare Find', 'Seasonal'],
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.10,
     description: 'Fast-growing, high-yield leafy green popular in southern African kitchens.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -81,7 +81,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.10,
     description: 'Contains all 9 essential amino acids. Rich in protein, calcium, iron, and vitamin C.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1518735888329-4b1d5a4c1af4?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Staff Pick', 'Heirloom'],
   },
@@ -93,7 +93,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.10,
     description: 'Slightly bitter, adds depth to dishes like Efo Riro.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1580706483913-b6ea7db483a0?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Rare Find', 'Heirloom'],
   },
@@ -117,7 +117,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 37.50,
     description: 'Succulent texture with tangy notes. Packed with antioxidants and omega-3s.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1599551213908-ae2a63d91614?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Staff Pick', 'Seasonal'],
   },
@@ -129,7 +129,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.10,
     description: 'Mucilaginous texture. Used in stir-fries and soups.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -140,7 +140,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.10,
     description: 'Slightly bitter, used in soups and sauces. Rich in fiber and low in calories.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=600&auto=format&fit=crop',
     tags: ['Heirloom'],
   },
   {
@@ -151,7 +151,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 31.30,
     description: 'Good source of fiber. Slippery when cooked. Key in Nigerian and Middle Eastern soups.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?w=600&auto=format&fit=crop',
     tags: ['Hot Seller', 'Heirloom'],
   },
   {
@@ -162,7 +162,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.10,
     description: 'Hearty texture, slightly bitter. Sauteed or stewed.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -185,7 +185,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 22.50,
     description: 'Sweet, nutty, and smooth. Used in soups or roasted.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1600411833196-7c1f6b1a8b90?w=600&auto=format&fit=crop',
     tags: ['Staff Pick', 'Heirloom'],
   },
   {
@@ -196,7 +196,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 22.50,
     description: 'Nutritious and flavourful leafy green. Rich in vitamins and minerals.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1598030304671-5aa1d6f9dda7?w=600&auto=format&fit=crop',
     tags: ['Rare Find'],
   },
   {
@@ -207,7 +207,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 22.50,
     description: 'Mild and tender with a spinach-like texture.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -217,7 +217,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 22.50,
     description: 'Nutrient-dense superfood. Great in salads, smoothies, or sauteed.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1500790145691-3e8e79b01e72?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked'],
   },
 
@@ -229,7 +229,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 29.00,
     description: 'Aromatic leaves used in tempering stews and sauces.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Rare Find', 'Limited'],
   },
@@ -241,7 +241,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 16.30,
     description: 'Cool and sweet flavour. Used in teas, sauces, and desserts.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked'],
   },
   {
@@ -252,7 +252,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 26.30,
     description: 'Sweet and peppery herb used in sauces and stews.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1618375569909-3c8616cf7733?w=600&auto=format&fit=crop',
     tags: ['Heirloom', 'Fresh Picked'],
   },
   {
@@ -262,7 +262,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.30,
     description: 'Bright, fresh herb. Essential garnish and flavour booster.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1616694012545-6b4d25b17f06?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked'],
   },
   {
@@ -272,7 +272,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.30,
     description: 'Earthy, slightly minty herb used in soups, stews, and marinades.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -282,7 +282,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.30,
     description: 'Citrusy herb essential in salsas, curries, and garnishes.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1599909533731-9e63ef2ec47b?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked'],
   },
   {
@@ -292,7 +292,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 24.00,
     description: 'Crisp and aromatic, used in soups and juices.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1649513557293-8a00f2b66bd7?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -302,7 +302,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 21.30,
     description: 'Mild onion flavour. Perfect raw or lightly cooked.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1615485290382-441e4aa8a399?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked'],
   },
   {
@@ -312,7 +312,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 16.30,
     description: 'Peppery, slightly bitter. Perfect in salads and on pizza.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked'],
   },
   {
@@ -334,7 +334,7 @@ export const products: Product[] = [
     unit: 'portion',
     price: 16.90,
     description: 'Sweet, bite-sized tomatoes. Great for salads and snacking.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558818498-28c1e002b655?w=600&auto=format&fit=crop',
     tags: ['Fresh Picked', 'Seasonal'],
   },
   {
@@ -345,7 +345,7 @@ export const products: Product[] = [
     unit: 'portion',
     price: 16.90,
     description: 'Classic cooking tomatoes. Meaty, flavourful, and versatile.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1561136594-7f68413baa99?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -356,7 +356,7 @@ export const products: Product[] = [
     unit: 'portion',
     price: 21.10,
     description: 'Tart and slightly citrusy. Essential in green salsas.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&auto=format&fit=crop',
     tags: ['Rare Find'],
   },
   {
@@ -378,7 +378,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 9.50,
     description: 'Juicy, hydrating summer fruit. High in lycopene and vitamin A.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1563114773-84221bd62daa?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Heirloom', 'Hot Seller'],
   },
@@ -390,7 +390,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 16.30,
     description: 'Mildly sweet and tender. Perfect for soups, stews, and stir-fries.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -401,7 +401,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 16.30,
     description: 'Mild and crisp with high water content.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589621316382-008455b857cd?w=600&auto=format&fit=crop',
     tags: ['Seasonal', 'Fresh Picked'],
   },
   {
@@ -411,7 +411,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 16.30,
     description: 'Heritage cucumber with crunchy and sweet skin. Round and bright yellow.',
-    image: 'https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=600&auto=format&fit=crop',
     tags: ['Rare Find', 'Heirloom'],
   },
 
@@ -423,7 +423,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 17.30,
     description: 'Mild and sweet red pepper. Often used for colour and sweetness in stews.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -434,7 +434,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 26.30,
     description: 'Very hot pepper with fruity undertones. Key in West African pepper soups.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Hot Seller', 'Fresh Picked'],
   },
@@ -445,7 +445,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 15.00,
     description: 'Similar to Bell pepper but bolder profile and less watery when pureed.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1525327340574-8b25a1e31c4d?w=600&auto=format&fit=crop',
     tags: ['Seasonal', 'Fresh Picked'],
   },
   {
@@ -455,7 +455,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 26.30,
     description: 'Fragrant chili variety with smoky aroma. Sun-dried and ground.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&auto=format&fit=crop',
     tags: ['Rare Find', 'Limited'],
   },
   {
@@ -466,7 +466,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 21.00,
     description: 'Asian variety with medium heat. Great for stew mixes and sauces.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1552918083-c3eabd3b7f00?w=600&auto=format&fit=crop',
     tags: ['Seasonal'],
   },
   {
@@ -476,7 +476,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 26.30,
     description: 'Extremely hot pepper used sparingly in sauces and spicy oils.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=600&auto=format&fit=crop',
     tags: ['Limited', 'Hot Seller'],
   },
 
@@ -488,7 +488,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 19.30,
     description: 'Vibrant purple flesh. Naturally sweet when roasted or steamed.',
-    image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590441440690-abb3e83e0b86?w=600&auto=format&fit=crop',
     tags: ['Rare Find', 'Seasonal'],
   },
   {
@@ -499,7 +499,7 @@ export const products: Product[] = [
     unit: 'kg',
     price: 19.30,
     description: 'Multiple heritage varieties. Rich, naturally sweet, and deeply nourishing.',
-    image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&auto=format&fit=crop',
     featured: true,
     tags: ['Heirloom', 'Seasonal'],
   },
@@ -511,7 +511,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 19.30,
     description: 'Heritage varieties in purple, rainbow, and tender sweet.',
-    image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?w=600&auto=format&fit=crop',
     tags: ['Heirloom', 'Fresh Picked'],
   },
   {
@@ -522,7 +522,7 @@ export const products: Product[] = [
     unit: 'bunch',
     price: 19.30,
     description: 'Earthy, sweet, and beautifully coloured. Perfect roasted or in salads.',
-    image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1589801258579-18e091f4ca26?w=600&auto=format&fit=crop',
     tags: ['Heirloom'],
   },
 ]
