@@ -1,89 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import NewsletterSection from '@/components/NewsletterSection'
-import { ArrowRight, Clock, Tag } from 'lucide-react'
+import { ArrowRight, Clock } from 'lucide-react'
+import { posts, featuredPost, restPosts } from '@/lib/posts'
 
-const posts = [
-  {
-    slug: 'what-is-waterleaf',
-    category: 'Ingredient Guide',
-    title: 'What is Waterleaf and why you should be cooking with it',
-    excerpt:
-      'Talinum triangulare grows abundantly across West Africa and the Caribbean. Tender, slightly mucilaginous and loaded with iron. Here\'s everything you need to know.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=800&auto=format&fit=crop&q=80',
-    readTime: '4 min read',
-    date: 'March 2026',
-    featured: true,
-  },
-  {
-    slug: 'afro-heritage-seeds',
-    category: 'Farm Story',
-    title: 'Why we chose heirloom seeds and what it changes',
-    excerpt:
-      'Commercial agriculture optimises for yield and shelf life. We optimise for taste. Here\'s the difference an heirloom seed makes.',
-    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&auto=format&fit=crop&q=80',
-    readTime: '6 min read',
-    date: 'February 2026',
-    featured: false,
-  },
-  {
-    slug: 'garden-egg-stew',
-    category: 'Recipe',
-    title: 'Garden egg stew: a recipe from Aramide\'s grandmother\'s kitchen',
-    excerpt:
-      'African eggplant cooked down with palm oil, crayfish, and scotch bonnet. A dish that tastes like Sunday afternoon in Lagos.',
-    image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=800&auto=format&fit=crop&q=80',
-    readTime: '5 min read',
-    date: 'January 2026',
-    featured: false,
-  },
-  {
-    slug: 'farm-share-guide',
-    category: 'CSA Guide',
-    title: 'Is a Farm Share right for you? An honest breakdown',
-    excerpt:
-      'A farm share (CSA) is a commitment and it\'s not for everyone. We\'ll help you figure out if it makes sense for your household.',
-    image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop&q=80',
-    readTime: '7 min read',
-    date: 'December 2025',
-    featured: false,
-  },
-  {
-    slug: 'ugu-leaf-guide',
-    category: 'Ingredient Guide',
-    title: 'Ugu leaf: the fluted pumpkin leaf that powers Nigerian cooking',
-    excerpt:
-      'From egusi soup to fisherman\'s soup, ugu leaf is the backbone of the Nigerian kitchen. Here\'s how to source it, store it, and cook with it.',
-    image: 'https://images.unsplash.com/photo-1515586000433-45406d8e6662?w=800&auto=format&fit=crop&q=80',
-    readTime: '5 min read',
-    date: 'November 2025',
-    featured: false,
-  },
-  {
-    slug: 'growing-season-2026',
-    category: 'Farm Update',
-    title: 'What we\'re growing in 2026 and what\'s new this season',
-    excerpt:
-      'Kiwano melon is back, Cameroon pepper is expanding, and we\'re trialling three new heritage varieties. A preview of the 2026 growing season.',
-    image: 'https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?w=800&auto=format&fit=crop&q=80',
-    readTime: '4 min read',
-    date: 'October 2025',
-    featured: false,
-  },
-]
-
-const categories = ['All', 'Farm Story', 'Ingredient Guide', 'Recipe', 'CSA Guide', 'Farm Update']
+const categories = ['All', 'Farm Story', 'Ingredient Guide', 'Home Gardening', 'Farm Gist', 'Recipe', 'CSA Guide']
 
 const categoryColors: Record<string, { bg: string; color: string }> = {
   'Farm Story':       { bg: 'var(--soft-green)',  color: 'var(--dark-green)' },
-  'Ingredient Guide': { bg: '#FFF0E6',             color: 'var(--dark-orange)' },
+  'Ingredient Guide': { bg: '#FFF0E6',             color: 'var(--dark-orange, #c0580a)' },
   'Recipe':           { bg: 'var(--leaf)',          color: 'var(--dark-green)' },
   'CSA Guide':        { bg: 'rgba(92,70,50,0.1)',   color: 'var(--brown)' },
   'Farm Update':      { bg: 'var(--soft-green)',    color: 'var(--dark-green)' },
+  'Home Gardening':   { bg: '#E8F5E9',              color: '#2E7D32' },
+  'Farm Gist':        { bg: 'var(--soft-green)',    color: 'var(--dark-green)' },
 }
-
-const featuredPost = posts.find(p => p.featured)!
-const restPosts = posts.filter(p => !p.featured)
 
 export default function ExplorePage() {
   return (
@@ -144,7 +75,7 @@ export default function ExplorePage() {
           <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: 'var(--muted-color)' }}>
             Featured
           </p>
-          <div className="grid lg:grid-cols-2 gap-8 items-center group cursor-pointer">
+          <Link href={`/explore/${featuredPost.slug}`} className="grid lg:grid-cols-2 gap-8 items-center group cursor-pointer">
             <div className="relative h-[340px] sm:h-[420px] rounded-3xl overflow-hidden">
               <Image
                 src={featuredPost.image}
@@ -187,7 +118,7 @@ export default function ExplorePage() {
                 Read more <ArrowRight size={14} />
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
 
@@ -197,9 +128,10 @@ export default function ExplorePage() {
           <div className="h-px mb-12" style={{ backgroundColor: 'var(--leaf)' }} />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {restPosts.map(post => (
-              <article
+              <Link
                 key={post.slug}
-                className="group cursor-pointer flex flex-col rounded-2xl overflow-hidden transition-shadow hover:shadow-md"
+                href={`/explore/${post.slug}`}
+                className="group flex flex-col rounded-2xl overflow-hidden transition-shadow hover:shadow-md"
                 style={{ border: '1px solid var(--leaf)', backgroundColor: '#fff' }}
               >
                 <div className="relative h-52 overflow-hidden">
@@ -241,7 +173,7 @@ export default function ExplorePage() {
                     Read more <ArrowRight size={12} />
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
