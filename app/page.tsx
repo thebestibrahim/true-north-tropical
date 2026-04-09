@@ -185,77 +185,132 @@ export default function HomePage() {
 
       {/* ── SECTION 3: EARLY BIRD COUNTDOWN ──────────────── */}
       {timeLeft !== null && (
-        <section
-          className="py-14 px-4"
-          style={{
-            background: 'linear-gradient(135deg, var(--dark-green) 0%, #1a4a24 100%)',
-          }}
-        >
-          <div className="max-w-4xl mx-auto text-center">
-            <span
-              className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-              style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
-            >
-              🌱 Early Bird — Limited Time
-            </span>
+        <section className="relative overflow-hidden py-20 px-4" style={{ backgroundColor: '#0d2e13' }}>
 
-            <h2
-              className="font-serif mb-2"
+          {/* Decorative radial glows */}
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full opacity-20"
+              style={{ background: 'radial-gradient(circle, var(--orange) 0%, transparent 70%)' }} />
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full opacity-15"
+              style={{ background: 'radial-gradient(circle, #3f6f46 0%, transparent 70%)' }} />
+            {/* Subtle grid lines */}
+            <div className="absolute inset-0 opacity-[0.04]"
               style={{
-                fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
-                color: 'var(--cream)',
-                lineHeight: 1.1,
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Lock in your farm share bonus before it&apos;s gone.
-            </h2>
-            <p
-              className="mb-10 text-base"
-              style={{ color: 'rgba(245,241,232,0.65)', fontWeight: 300, maxWidth: '460px', margin: '0 auto 2.5rem' }}
-            >
-              Sign up before April 20 and get up to 10% added to your farm wallet — free.
-            </p>
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }} />
+          </div>
 
-            {/* Countdown */}
-            <div className="flex justify-center gap-3 sm:gap-6 mb-10">
-              {[
-                { value: timeLeft.days,    label: 'Days' },
-                { value: timeLeft.hours,   label: 'Hours' },
-                { value: timeLeft.minutes, label: 'Minutes' },
-                { value: timeLeft.seconds, label: 'Seconds' },
-              ].map(({ value, label }) => (
-                <div key={label} className="flex flex-col items-center">
-                  <div
-                    className="w-16 sm:w-20 h-16 sm:h-20 rounded-2xl flex items-center justify-center font-serif font-bold"
-                    style={{
-                      fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
-                      backgroundColor: 'rgba(255,255,255,0.08)',
-                      border: '1px solid rgba(255,255,255,0.14)',
-                      color: '#fff',
-                    }}
-                  >
-                    {String(value).padStart(2, '0')}
-                  </div>
-                  <span
-                    className="mt-2 text-[0.65rem] uppercase tracking-widest font-medium"
-                    style={{ color: 'rgba(245,241,232,0.45)' }}
-                  >
-                    {label}
-                  </span>
-                </div>
-              ))}
+          <div className="relative z-10 max-w-5xl mx-auto">
+
+            {/* Top label */}
+            <div className="flex justify-center mb-8">
+              <span
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full"
+                style={{ backgroundColor: 'rgba(232,125,47,0.18)', color: 'var(--orange)', border: '1px solid rgba(232,125,47,0.35)' }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--orange)] animate-pulse" />
+                Early Bird — Closes April 20
+              </span>
             </div>
 
-            <Link href="/farm-share">
-              <button
-                className="shimmer-btn h-13 px-10 rounded-xl text-base font-semibold flex items-center gap-2 mx-auto"
-                style={{ backgroundColor: 'var(--orange)', color: '#fff', height: '3.25rem' }}
-              >
-                Get a Farm Share Now
-                <ArrowRight size={16} />
-              </button>
-            </Link>
+            {/* Split layout */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+              {/* Left: Copy */}
+              <div>
+                <h2
+                  className="font-serif mb-4"
+                  style={{
+                    fontSize: 'clamp(2rem, 4.5vw, 3.2rem)',
+                    color: 'var(--cream)',
+                    lineHeight: 1.08,
+                    letterSpacing: '-0.025em',
+                  }}
+                >
+                  Get more from your<br />
+                  <span style={{ color: 'var(--orange)' }}>farm wallet</span> this season.
+                </h2>
+                <p className="mb-8 leading-relaxed" style={{ color: 'rgba(245,241,232,0.6)', fontWeight: 300, fontSize: '1.05rem', maxWidth: '400px' }}>
+                  Sign up before April 20 and we&apos;ll top up your farm wallet with a free bonus — up to 10% extra to spend on produce all season long.
+                </p>
+
+                {/* Bonus tiers */}
+                <div className="space-y-3 mb-8">
+                  {[
+                    { tier: 'Bounty Share',   price: '$700', bonus: '10%', wallet: '$770' },
+                    { tier: 'Essential Share', price: '$300', bonus: '7%',  wallet: '$321' },
+                    { tier: 'Sampler Share',   price: '$100', bonus: '2%',  wallet: '$102' },
+                  ].map(({ tier, price, bonus, wallet }) => (
+                    <div
+                      key={tier}
+                      className="flex items-center justify-between px-4 py-3 rounded-xl"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)' }}
+                    >
+                      <div>
+                        <p className="text-sm font-medium" style={{ color: 'var(--cream)' }}>{tier}</p>
+                        <p className="text-xs" style={{ color: 'rgba(245,241,232,0.4)' }}>Pay {price}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-semibold" style={{ color: 'var(--orange)' }}>+{bonus} bonus</p>
+                        <p className="text-xs" style={{ color: 'rgba(245,241,232,0.4)' }}>{wallet} wallet value</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href="/farm-share">
+                  <button
+                    className="shimmer-btn h-13 px-8 rounded-xl text-base font-semibold flex items-center gap-2"
+                    style={{ backgroundColor: 'var(--orange)', color: '#fff', height: '3.25rem' }}
+                  >
+                    Get a Farm Share Now
+                    <ArrowRight size={16} />
+                  </button>
+                </Link>
+              </div>
+
+              {/* Right: Countdown */}
+              <div className="flex flex-col items-center justify-center">
+                <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: 'rgba(245,241,232,0.35)' }}>
+                  Offer expires in
+                </p>
+                <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
+                  {[
+                    { value: timeLeft.days,    label: 'Days' },
+                    { value: timeLeft.hours,   label: 'Hours' },
+                    { value: timeLeft.minutes, label: 'Minutes' },
+                    { value: timeLeft.seconds, label: 'Seconds' },
+                  ].map(({ value, label }) => (
+                    <div
+                      key={label}
+                      className="flex flex-col items-center justify-center rounded-2xl py-6"
+                      style={{
+                        background: 'linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        boxShadow: '0 4px 24px rgba(0,0,0,0.25)',
+                      }}
+                    >
+                      <span
+                        className="font-serif font-bold leading-none"
+                        style={{ fontSize: 'clamp(2.4rem, 5vw, 3.2rem)', color: '#fff' }}
+                      >
+                        {String(value).padStart(2, '0')}
+                      </span>
+                      <span
+                        className="mt-2 text-[0.6rem] uppercase tracking-widest"
+                        style={{ color: 'rgba(245,241,232,0.35)' }}
+                      >
+                        {label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-xs text-center" style={{ color: 'rgba(245,241,232,0.3)' }}>
+                  April 6 – 20, 2026 only
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       )}
