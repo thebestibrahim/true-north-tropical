@@ -49,6 +49,9 @@ export default function Footer() {
                 { href: '/shop',        label: 'Farm Store' },
                 { href: '/farm-share',  label: 'Farm Share CSA' },
                 { href: '/about',       label: 'Our Story' },
+                { href: '/explore',     label: 'Explore' },
+                { href: '/contact',     label: 'Contact Us' },
+                { href: '/vendor',      label: 'Sell with Us (Vendors)' },
                 { href: '/faq',         label: 'FAQ' },
               ].map(link => (
                 <li key={link.href}>

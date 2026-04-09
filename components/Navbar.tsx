@@ -34,6 +34,7 @@ const navLinks = [
   { href: '/about',        label: 'About',      dropdown: null },
   { href: '/explore',      label: 'Explore',    dropdown: exploreDropdown },
   { href: '/contact',      label: 'Contact',    dropdown: null },
+  { href: '/vendor',       label: 'Sell with Us', dropdown: null },
 ]
 
 function DropdownMenu({ items }: { items: { href: string; label: string }[] }) {
