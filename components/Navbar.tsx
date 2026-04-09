@@ -33,6 +33,7 @@ const navLinks = [
   { href: '/shop',         label: 'Shop',       dropdown: shopDropdown },
   { href: '/about',        label: 'About',      dropdown: null },
   { href: '/explore',      label: 'Explore',    dropdown: exploreDropdown },
+  { href: '/contact',      label: 'Contact',    dropdown: null },
 ]
 
 function DropdownMenu({ items }: { items: { href: string; label: string }[] }) {

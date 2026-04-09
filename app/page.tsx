@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import ProductCard from '@/components/ProductCard'
@@ -9,7 +9,7 @@ import TestimonialCard from '@/components/TestimonialCard'
 import NewsletterSection from '@/components/NewsletterSection'
 import { featuredProducts, products, categories } from '@/lib/products'
 import type { Category } from '@/lib/products'
-import { ArrowRight, CalendarDays, ShoppingBag, Truck, Leaf, ChevronRight, Clock } from 'lucide-react'
+import { ArrowRight, CalendarDays, ShoppingBag, Truck, Leaf, ChevronRight } from 'lucide-react'
 import { tiers, earlyBirdWindow } from '@/lib/tiers'
 
 // 3 tiers for homepage teaser (Bounty first — anchoring)
@@ -43,8 +43,27 @@ const wholesaleSteps = [
   { num: '04', title: 'Schedule pickup or delivery', icon: Truck },
 ]
 
+const EARLY_BIRD_END = new Date('2026-04-20T23:59:59')
+
+function getTimeLeft() {
+  const diff = EARLY_BIRD_END.getTime() - Date.now()
+  if (diff <= 0) return null
+  return {
+    days:    Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours:   Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  }
+}
+
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft())
+
+  useEffect(() => {
+    const id = setInterval(() => setTimeLeft(getTimeLeft()), 1000)
+    return () => clearInterval(id)
+  }, [])
 
   const displayProducts = (
     activeCategory === 'all'
@@ -164,7 +183,84 @@ export default function HomePage() {
       {/* ── SECTION 2: TRUST MARQUEE ──────────────────────── */}
       <TrustMarquee />
 
-      {/* ── SECTION 3: THIS WEEK'S HARVEST ────────────────── */}
+      {/* ── SECTION 3: EARLY BIRD COUNTDOWN ──────────────── */}
+      {timeLeft !== null && (
+        <section
+          className="py-14 px-4"
+          style={{
+            background: 'linear-gradient(135deg, var(--dark-green) 0%, #1a4a24 100%)',
+          }}
+        >
+          <div className="max-w-4xl mx-auto text-center">
+            <span
+              className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+              style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
+            >
+              🌱 Early Bird — Limited Time
+            </span>
+
+            <h2
+              className="font-serif mb-2"
+              style={{
+                fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
+                color: 'var(--cream)',
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Lock in your farm share bonus before it&apos;s gone.
+            </h2>
+            <p
+              className="mb-10 text-base"
+              style={{ color: 'rgba(245,241,232,0.65)', fontWeight: 300, maxWidth: '460px', margin: '0 auto 2.5rem' }}
+            >
+              Sign up before April 20 and get up to 10% added to your farm wallet — free.
+            </p>
+
+            {/* Countdown */}
+            <div className="flex justify-center gap-3 sm:gap-6 mb-10">
+              {[
+                { value: timeLeft.days,    label: 'Days' },
+                { value: timeLeft.hours,   label: 'Hours' },
+                { value: timeLeft.minutes, label: 'Minutes' },
+                { value: timeLeft.seconds, label: 'Seconds' },
+              ].map(({ value, label }) => (
+                <div key={label} className="flex flex-col items-center">
+                  <div
+                    className="w-16 sm:w-20 h-16 sm:h-20 rounded-2xl flex items-center justify-center font-serif font-bold"
+                    style={{
+                      fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
+                      backgroundColor: 'rgba(255,255,255,0.08)',
+                      border: '1px solid rgba(255,255,255,0.14)',
+                      color: '#fff',
+                    }}
+                  >
+                    {String(value).padStart(2, '0')}
+                  </div>
+                  <span
+                    className="mt-2 text-[0.65rem] uppercase tracking-widest font-medium"
+                    style={{ color: 'rgba(245,241,232,0.45)' }}
+                  >
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <Link href="/farm-share">
+              <button
+                className="shimmer-btn h-13 px-10 rounded-xl text-base font-semibold flex items-center gap-2 mx-auto"
+                style={{ backgroundColor: 'var(--orange)', color: '#fff', height: '3.25rem' }}
+              >
+                Get a Farm Share Now
+                <ArrowRight size={16} />
+              </button>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* ── SECTION 4: THIS WEEK'S HARVEST ────────────────── */}
       <section className="py-20 px-4" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -271,15 +367,6 @@ export default function HomePage() {
             <p className="text-base max-w-md mx-auto" style={{ color: 'var(--muted-color)', fontWeight: 300 }}>
               Pre-invest in your farm wallet. No fixed boxes. Shop what you want, when you want it.
             </p>
-          </div>
-
-          {/* Early bird notice */}
-          <div
-            className="max-w-xl mx-auto mb-10 mt-4 flex items-center gap-2 justify-center px-5 py-2.5 rounded-full text-sm font-medium"
-            style={{ backgroundColor: 'var(--orange)', color: '#fff' }}
-          >
-            <Clock size={14} />
-            Early Bird bonus: {earlyBirdWindow.label} only
           </div>
 
           {/* 3 tier cards */}
